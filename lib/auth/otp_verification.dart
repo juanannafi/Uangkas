@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:pinput/pinput.dart';
+import 'package:flutter/services.dart';
 
 class OTPVer extends StatefulWidget {
   const OTPVer({super.key});
@@ -12,20 +11,6 @@ class OTPVer extends StatefulWidget {
 class _OTPVerState extends State<OTPVer> {
   @override
   Widget build(BuildContext context) {
-    final defaultPinTheme = PinTheme(
-      margin: const EdgeInsets.all(7),
-      width: 53,
-      height: 53,
-      textStyle: const TextStyle(
-        fontSize: 22,
-        color: Colors.black,
-      ),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(15),
-        border: Border.all(color: Colors.black)
-      )
-    );
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: const Color.fromARGB(255, 0, 0, 128),
@@ -81,15 +66,128 @@ class _OTPVerState extends State<OTPVer> {
                       ),
                     ),
                     const SizedBox(height: 30),
-                    Pinput(
-                      length: 4,
-                      defaultPinTheme: defaultPinTheme,
-                      focusedPinTheme: defaultPinTheme.copyWith(
-                        decoration: defaultPinTheme.decoration!.copyWith(
-                          border: Border.all(color: Colors.grey)
-                        )
+                    Form(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SizedBox(
+                            width: 70,
+                            height: 70,
+                            child: TextFormField(
+                              onChanged: (value) {
+                                if(value.length == 1){
+                                  FocusScope.of(context).nextFocus();
+                                }
+                              },
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold
+                              ),
+                              inputFormatters: [
+                                LengthLimitingTextInputFormatter(1),
+                                FilteringTextInputFormatter.digitsOnly,
+                              ],
+                              decoration: const InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                                  borderSide: BorderSide(
+                                    color: Color.fromARGB(255, 0, 0, 128)
+                                  )
+                                )
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 70,
+                            height: 70,
+                            child: TextFormField(
+                              onChanged: (value) {
+                                if(value.length == 1){
+                                  FocusScope.of(context).nextFocus();
+                                }
+                              },
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold
+                              ),
+                              inputFormatters: [
+                                LengthLimitingTextInputFormatter(1),
+                                FilteringTextInputFormatter.digitsOnly
+                              ],
+                              decoration: const InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                                  borderSide: BorderSide(
+                                    color: Color.fromARGB(255, 0, 0, 128)
+                                  )
+                                )
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 70,
+                            height: 70,
+                            child: TextFormField(
+                              onChanged: (value) {
+                                if(value.length == 1){
+                                  FocusScope.of(context).nextFocus();
+                                }
+                              },
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold
+                              ),
+                              inputFormatters: [
+                                LengthLimitingTextInputFormatter(1),
+                                FilteringTextInputFormatter.digitsOnly
+                              ],
+                              decoration: const InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                                  borderSide: BorderSide(
+                                    color: Color.fromARGB(255, 0, 0, 128)
+                                  )
+                                )
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 70,
+                            height: 70,
+                            child: TextFormField(
+                              onChanged: (value) {
+                                if(value.length == 1){
+                                  FocusScope.of(context).nextFocus();
+                                }
+                              },
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold
+                              ),
+                              inputFormatters: [
+                                LengthLimitingTextInputFormatter(1),
+                                FilteringTextInputFormatter.digitsOnly
+                              ],
+                              decoration: const InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                                  borderSide: BorderSide(
+                                    color: Color.fromARGB(255, 0, 0, 128)
+                                  )
+                                )
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                      onCompleted: (pin) => debugPrint(pin),
                     ),
                     const SizedBox(height: 50),
                     SizedBox(
