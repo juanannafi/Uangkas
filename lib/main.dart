@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:kas_cerdas_app/auth/changepassword.dart';
 import 'package:kas_cerdas_app/auth/login.dart';
 
 void main() {

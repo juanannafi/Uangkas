@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -36,7 +34,7 @@ class _RegisterState extends State<Register> {
             height: 589,
             width: 500,
             decoration: const BoxDecoration(
-              color: Color.fromARGB(255, 254, 240, 243),
+              color: Color.fromARGB(255, 240, 248, 254),
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(50), topRight: Radius.circular(50)),
             ),

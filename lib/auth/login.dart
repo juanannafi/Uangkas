@@ -1,8 +1,7 @@
-import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:kas_cerdas_app/auth/forgotpassword.dart';
+import 'package:kas_cerdas_app/auth/forgot_password.dart';
 import 'package:kas_cerdas_app/auth/register.dart';
 
 class Login extends StatefulWidget {
@@ -36,7 +35,7 @@ class _LoginState extends State<Login> {
             height: 589,
             width: 500,
             decoration: const BoxDecoration(
-              color: Color.fromARGB(255, 254, 240, 243),
+              color: Color.fromARGB(255, 240, 248, 254),
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(50), topRight: Radius.circular(50)),
             ),

@@ -1,16 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:pinput/pinput.dart';
 
-class ChangePassword extends StatefulWidget {
-  const ChangePassword({super.key});
+class OTPVer extends StatefulWidget {
+  const OTPVer({super.key});
 
   @override
-  State<ChangePassword> createState() => _ChangePasswordState();
+  State<OTPVer> createState() => _OTPVerState();
 }
 
-class _ChangePasswordState extends State<ChangePassword> {
+class _OTPVerState extends State<OTPVer> {
   @override
   Widget build(BuildContext context) {
+    final defaultPinTheme = PinTheme(
+      margin: const EdgeInsets.all(7),
+      width: 53,
+      height: 53,
+      textStyle: const TextStyle(
+        fontSize: 22,
+        color: Colors.black,
+      ),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(15),
+        border: Border.all(color: Colors.black)
+      )
+    );
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: const Color.fromARGB(255, 0, 0, 128),
@@ -27,7 +42,7 @@ class _ChangePasswordState extends State<ChangePassword> {
               height: 140,
             ),
             const Text(
-              "Change Password",
+              "Verification",
               style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.w700,
@@ -41,7 +56,7 @@ class _ChangePasswordState extends State<ChangePassword> {
               height: 400,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(50)),
-                color: Color.fromARGB(255, 254, 240, 243),
+                color: Color.fromARGB(255, 240, 248, 254),
               ),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -49,7 +64,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                   children: [
                     const SizedBox(height: 30),
                     const Text(
-                      "Enter your new password",
+                      "Check your email",
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         fontSize: 22,
@@ -57,7 +72,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                       ),
                     ),
                     const Text(
-                      "Your new password must be different\nfrom previously used password",
+                      "Enter the code we sent to :\n b********@gmail.com",
                       style: TextStyle(
                           fontWeight: FontWeight.w400,
                           fontSize: 16,
@@ -65,45 +80,18 @@ class _ChangePasswordState extends State<ChangePassword> {
                           wordSpacing: 0
                       ),
                     ),
-                    const SizedBox(height: 20),
-                    const TextField(
-                      obscureText: true,
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(13)),
-                            borderSide: BorderSide(
-                              color: Color.fromARGB(255, 0, 0, 128),
-                            ),
-                          ),
-                          label: Text(
-                            "Password",
-                            selectionColor: Color.fromARGB(255, 0, 0, 128),
-                          ),
-                          prefixIcon: Icon(
-                            Icons.lock,
-                            color: Color.fromARGB(255, 0, 0, 128),
-                          )),
+                    const SizedBox(height: 30),
+                    Pinput(
+                      length: 4,
+                      defaultPinTheme: defaultPinTheme,
+                      focusedPinTheme: defaultPinTheme.copyWith(
+                        decoration: defaultPinTheme.decoration!.copyWith(
+                          border: Border.all(color: Colors.grey)
+                        )
+                      ),
+                      onCompleted: (pin) => debugPrint(pin),
                     ),
-                    const SizedBox(height: 30,),
-                    const TextField(
-                      obscureText: true,
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(13)),
-                            borderSide: BorderSide(
-                              color: Color.fromARGB(255, 0, 0, 128),
-                            ),
-                          ),
-                          label: Text(
-                            "Confirm Password",
-                            selectionColor: Color.fromARGB(255, 0, 0, 128),
-                          ),
-                          prefixIcon: Icon(
-                            Icons.lock,
-                            color: Color.fromARGB(255, 0, 0, 128),
-                          )),
-                    ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 50),
                     SizedBox(
                       width: 328,
                       height: 55,
