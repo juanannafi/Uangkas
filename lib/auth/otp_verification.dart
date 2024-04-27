@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -9,6 +11,29 @@ class OTPVer extends StatefulWidget {
 }
 
 class _OTPVerState extends State<OTPVer> {
+  int resendTime = 60;
+  late Timer countdownTimer;
+  @override
+  void initState() {
+    startTimer();
+    super.initState();
+  }
+  startTimer(){
+    countdownTimer = Timer.periodic(const Duration(seconds: 1), (timer){
+      setState(() {
+        resendTime = resendTime - 1;
+      });
+      if(resendTime < 1){
+        countdownTimer.cancel();
+      }
+    });
+  }
+  // stopTimer(){
+  //   if(countdownTimer.isActive){
+  //     countdownTimer.cancel();
+  //   }
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -211,7 +236,46 @@ class _OTPVerState extends State<OTPVer> {
                                 color: Colors.white),
                           )),
                     ),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 30),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          "Resend code in",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            color: Color.fromARGB(255, 20, 22, 150)
+                          ),
+                        ),
+                        const SizedBox(width: 5),
+                        resendTime != 0
+                        ? Text(
+                          '$resendTime',
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 20, 22, 150)
+                          ),
+                        )
+                        :
+                        InkWell(
+                          onTap: () {
+                            resendTime = 60;
+                            startTimer();
+                          },
+                          child: const Text(
+                            'Click!',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(255, 20, 22, 150),
+                              decoration: TextDecoration.underline, decorationColor: Color.fromARGB(255, 20, 22, 150)
+                            ),
+                          ),
+                        )
+                      ],
+                    )
                   ],
                 ),
               ),
