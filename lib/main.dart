@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import 'package:kas_cerdas_app/auth/otp_verification.dart';
+import 'package:flutter/services.dart';
+import 'package:kas_cerdas_app/home/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,7 +14,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: OTPVer(),
+      debugShowCheckedModeBanner: false,
+      home: Home(),
     );
   }
 }
